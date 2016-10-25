@@ -1,4 +1,36 @@
+spring.application.name: reg-cfg-server
+
 server.port: 1111
+
+#Register Server
 eureka.client.register-with-eureka: false
 eureka.client.fetch-registry: false
 eureka.client.serviceUrl.defaultZone: http://localhost:${server.port}/eureka/
+
+#Configuration Server
+spring.cloud.config.server.git.uri: https://github.com/kala888/server-repo
+spring.cloud.config.server.git.searchPaths: acp,scd-config
+
+#spring.cloud.config.server.git.uri: https://stash.aaxisgroup.net/users/kalaliu/repos/
+#spring.cloud.config.server.git.searchPaths: server-config/browse
+#spring.cloud.config.server.git.username: kalaliu
+#spring.cloud.config.server.git.password: Miahero0408
+
+#server-repo  branch master have two folder acp, vcs and scd-config
+#file rule: {application}-{profile}.{yml | properties}， label is the git branch
+#path rule:
+#/{application}/{profile}[/{label}]
+#/{application}-{profile}.yml
+#/{label}/{application}-{profile}.yml
+#/{application}-{profile}.properties
+#/{label}/{application}-{profile}.properties
+
+# mapping eg.
+#    /acp/prod == /acp/prod/master ==>acp/acp-prod.yml
+#    /acp/prod/develop =>acp/acp-prod.yml  from the branch of develop
+#    /acp/acp   ==>acp/acp.yml
+#    /acp/aaaa ==>acp/acp.yml
+#    /scd/dev   ==>scd-config/scd-dev.yml
+#    /vcs/dev    ==> empty
+
+#spring.cloud.config.server.git.searchPaths: vcs, acp, scd-config

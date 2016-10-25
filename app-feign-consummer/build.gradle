@@ -1,7 +1,0 @@
-dependencies {
-  compile libs.springBoot
-  compile libs.springBootTomcat
-	compile libs.springcloud.eureka
-    compile "org.springframework.cloud:spring-cloud-starter-feign"
-	// compile project(':core')
-}
