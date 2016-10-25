@@ -1,3 +1,0 @@
-spring.application.name: network-service
-server.port: 2322
-eureka.client.serviceUrl.defaultZone: http://localhost:1111/eureka/
