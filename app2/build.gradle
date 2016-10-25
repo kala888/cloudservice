@@ -5,5 +5,4 @@ dependencies {
   compile libs.springcloud.eureka_ribbon
   compile "org.springframework.cloud:spring-cloud-starter-hystrix"
   compile "org.springframework.cloud:spring-cloud-starter-config"
-	// compile project(':core')
 }

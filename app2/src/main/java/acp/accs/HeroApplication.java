@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableCircuitBreaker
-public class Application {
+public class HeroApplication {
     @Bean
     @LoadBalanced
     RestTemplate restTemplate() {
@@ -21,6 +21,6 @@ public class Application {
 
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(HeroApplication.class, args);
     }
 }

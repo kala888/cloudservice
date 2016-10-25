@@ -1,4 +1,4 @@
-package acp.accs.web;
+package acp.accs.simple.web;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ComputeController {
+public class CalcController {
     private final Logger    logger = Logger.getLogger(getClass());
     @Autowired
     private DiscoveryClient client;

@@ -1,5 +1,5 @@
-spring.application.name: hero-service(consumer with ribbon)
-server.port: 2322
+spring.application.name: hero
+server.port: 8180
 eureka.client.serviceUrl.defaultZone: http://localhost:1111/eureka/
 
 from: simple value in application.yml

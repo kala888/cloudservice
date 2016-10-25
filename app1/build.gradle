@@ -2,5 +2,4 @@ dependencies {
     compile libs.springBoot
     compile libs.springBootTomcat
 	compile libs.springcloud.eureka
-	// compile project(':core')
 }

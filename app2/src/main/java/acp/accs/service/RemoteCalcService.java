@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @Service
-public class ComputeService {
+public class RemoteCalcService {
     @Autowired
     RestTemplate restTemplate;
 
@@ -21,7 +21,7 @@ public class ComputeService {
         Map<String, String> map = new HashMap<String, String>();
         map.put("a", a.toString());
         map.put("b", b.toString());
-        return restTemplate.getForEntity("http://COMPUTE-SERVICE/add?a={a}&b={b}", String.class, map).getBody();
+        return restTemplate.getForEntity("http://CALC-SERVICE/add?a={a}&b={b}", String.class, map).getBody();
     }
 
 
