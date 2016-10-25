@@ -38,45 +38,6 @@ public class SpringfoxConfiguration {
                                                                                            ResponseEntity.class,
                                                                                            WildcardType.class)),
                                                               typeResolver.resolve(WildcardType.class)))
-                                                      .useDefaultResponseMessages(false)
-                /*
-                .securitySchemes(Lists.newArrayList(apiKey()))
-                .securityContexts(Lists.newArrayList(securityContext()))
-                .enableUrlTemplating(true)*/;
+                                                      .useDefaultResponseMessages(false);
     }
-    
-    /*private ApiKey apiKey() {
-        return new ApiKey("apiDocKey", "api_doc_key", "header");
-    }
-    
-    private SecurityContext securityContext() {
-        return SecurityContext.builder()
-                .securityReferences(defaultAuth())
-                .forPaths(PathSelectors.regex("/anyPath.*"))
-                .buildReceiver();
-    }
-    
-    List<SecurityReference> defaultAuth() {
-        AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
-        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
-        authorizationScopes[0] = authorizationScope;
-        
-        return Lists.newArrayList(
-                new SecurityReference("apiDocKey", authorizationScopes));
-    }
-    
-    @Bean
-    SecurityConfiguration security() {
-        return new SecurityConfiguration(
-                "app-client-id",
-                "app-realm",
-                "app",
-                "apiKey");
-    }
-    
-    @Bean
-    UiConfiguration uiConfig() {
-        return new UiConfiguration("validatorUrl");
-    }*/
-
 }

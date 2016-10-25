@@ -1,5 +1,4 @@
 apply from: "$rootDir/build-config.gradle"
-def rootname="cloudservice"
 
 buildscript {
     repositories {

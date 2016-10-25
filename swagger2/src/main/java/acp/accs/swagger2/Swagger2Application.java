@@ -8,6 +8,8 @@ import org.springframework.boot.context.web.ErrorPageFilter;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.web.context.WebApplicationContext;
 
+import acp.accs.simple.CalcApplication;
+
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = SecurityAutoConfiguration.class)
 public class Swagger2Application extends SpringBootServletInitializer {
@@ -21,7 +23,7 @@ public class Swagger2Application extends SpringBootServletInitializer {
 
 
     public static void main(String[] args) {
-        SpringApplication.run(new Object[] { Swagger2Application.class, SpringfoxConfiguration.class }, args);
+        SpringApplication.run(new Object[] { CalcApplication.class,Swagger2Application.class, SpringfoxConfiguration.class }, args);
     }
 
 }
