@@ -1,0 +1,6 @@
+dependencies {
+    compile libs.springBoot
+    compile libs.springBootTomcat
+	compile libs.springfox
+	// compile project(':core')
+}

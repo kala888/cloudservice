@@ -1,0 +1,52 @@
+ext {
+        libs = [
+                commons          : [
+
+                ],
+                springcloud :[
+                  eureka:[
+                    "org.springframework.cloud:spring-cloud-starter-eureka"
+                  ],
+                  eureka_server:[
+                    "org.springframework.cloud:spring-cloud-starter-eureka-server"
+                  ],
+                  eureka_ribbon:[
+                    "org.springframework.cloud:spring-cloud-starter-ribbon"
+                  ]
+                ],
+                springBoot       : [
+                        "org.springframework.boot:spring-boot-starter:${springBootVersion}",
+                        "org.springframework.boot:spring-boot-starter-web:${springBootVersion}",
+                        "org.springframework.boot:spring-boot-starter-mail:${springBootVersion}",
+                        "org.springframework.boot:spring-boot-starter-aop:${springBootVersion}",
+                        "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
+                ],
+                springDataMongodb: [
+                        "org.springframework.boot:spring-boot-starter-data-mongodb:${springBootVersion}",
+                ],
+                springSecurity   : [
+                        "org.springframework.boot:spring-boot-starter-security:${springBootVersion}"
+                ],
+                springOAuth2     : [
+                        "org.springframework.security.oauth:spring-security-oauth2:${springOauth2Version}"
+                ],
+                springRedis  : [
+                        "org.springframework.boot:spring-boot-starter-redis:${springBootVersion}"
+                ],
+                springBootTomcat : [
+                        "org.springframework.boot:spring-boot-starter-tomcat:${springBootVersion}"
+                ],
+                springfox        : [
+                        "io.springfox:springfox-swagger2:${swagger2Version}",
+                        "io.springfox:springfox-swagger-ui:${swaggerUIVersion}"
+                ],
+                swagger2         : [
+                        "io.swagger:swagger-annotations:${swaggerAnnotationsVersion}"
+                ],
+                test             : [
+                        "junit:junit:${junitVersion}",
+                        "org.springframework.boot:spring-boot-starter-test:${springBootVersion}",
+                        "org.springframework.security:spring-security-test:${springSecurityVersion}",
+                ]
+        ]
+}
