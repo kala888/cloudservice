@@ -1,0 +1,6 @@
+version: '2'
+services:
+  consul-server:
+    build: .
+    #command: ./startup.sh "-client=0.0.0.0 -node=node1 -join=consul-server -data-dir=/tmp/consul"
+    network_mode: "bridge"

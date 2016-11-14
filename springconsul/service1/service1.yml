@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  service1:
+    image: kala888/jdk
+    volumes:
+      - ./:/project
+      - ../springboot-startup.sh:/startup.sh
+    command: sh -c "/startup.sh springconsul-service1-0.1.0.SNAPSHOT.jar"
+    ports:
+      - "8080:8080"
+    network_mode: "bridge"

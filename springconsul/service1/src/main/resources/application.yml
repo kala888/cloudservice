@@ -1,0 +1,24 @@
+spring.application.name: calc-service
+server.port: 8080
+
+spring:
+  cloud:
+    consul:
+      host: consul-server
+      port: 8500
+      discovery:
+        healthCheckPath: /health
+        healthCheckInterval: 15s
+        tags: foo=bar, baz
+        instanceId: calc-service
+
+
+#spring.cloud.consul.enabled: true
+#spring.cloud.consul.discovery.enabled: true
+#spring.cloud.consul.discovery.instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+#spring.cloud.consul.discovery.serviceName: tomcat
+#spring.cloud.consul.discovery.hostname: 192.169.0.1
+#spring.cloud.consul.discovery.port: ${server.port}
+#spring.cloud.consul.discovery.healthCheckUrl: ${management.contextPath}/health
+#spring.cloud.consul.discovery.healthCheckInterval: 10s
+spring.cloud.consul.discovery.tags: dev

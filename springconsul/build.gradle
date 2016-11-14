@@ -1,0 +1,86 @@
+apply from: "$rootDir/build-config.gradle"
+
+buildscript {
+    repositories {
+      maven { url "https://repo.spring.io/libs-release" }
+      mavenLocal()
+      jcenter()
+    }
+    dependencies {
+      classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+allprojects {
+
+    group = "${rootname}"
+    version = qualifyVersionIfNecessary(version)
+
+    repositories {
+        mavenLocal()
+        jcenter()
+        mavenCentral()
+        maven { url "https://repo.spring.io/libs-release" }
+    }
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+}
+
+subprojects{
+  apply plugin: 'java'
+  apply plugin: 'eclipse-wtp'
+  apply plugin: 'eclipse-wtp'
+  apply plugin: 'spring-boot'
+  sourceCompatibility = 1.8
+  targetCompatibility = 1.8
+
+  // jar {
+  //     baseName = project['artifactId']
+  //     // version = version
+  // }
+  task sourcesJar(type: Jar) {
+      baseName = project['artifactId']
+      version = project['version']
+      classifier = 'sources'
+      from sourceSets.main.allSource
+  }
+  artifacts {
+      archives sourcesJar
+  }
+
+  // dependencyManagement {
+  //   imports {
+  //     mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Brixton.SR5'
+  //   }
+  // }
+
+  dependencies {
+      testCompile libs.test
+  }
+
+  task dev << {
+      bootRun.systemProperty 'spring.profiles.active', 'dev'
+  }
+
+  bootRun {
+      jvmArgs "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8787"
+  }
+}
+
+/*
+ * Support publication of artifacts versioned by topic branch.
+ * CI builds supply `-P BRANCH_NAME=<TOPIC>` to gradle at build time.
+ * If <TOPIC> starts with 'ACP-', change version
+ *     from BUILD-SNAPSHOT => <TOPIC>-SNAPSHOT
+ *     e.g. 3.2.1.BUILD-SNAPSHOT => 3.2.1.ACP-1234-SNAPSHOT
+ */
+def qualifyVersionIfNecessary(version) {
+    if (rootProject.hasProperty("BRANCH_NAME")) {
+        def qualifier = rootProject.getProperty("BRANCH_NAME")
+        if (qualifier.startsWith("ACP-")) {
+            return version.replace('BUILD', qualifier)
+        }
+    }
+    return version
+}

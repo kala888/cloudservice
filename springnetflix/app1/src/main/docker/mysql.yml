@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  db:
+    #image: docker.artifactory.aaxischina.net/aaxiscommerce/mysql
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=VCS_DEV
+      - MYSQL_USER=vcs_dev_user
+      - MYSQL_PASSWORD=passw0rd
+    ports:
+      - "3306:3306"
+    network_mode: "bridge"

@@ -1,0 +1,10 @@
+rootProject.name = 'cloudservice'
+include 'app1'
+include 'app2'
+include 'reg-server'
+include 'api-gateway'
+include 'swagger2'
+
+rootProject.children.each{
+  it.name="${rootProject.name}-${it.name}"
+}

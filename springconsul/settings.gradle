@@ -1,0 +1,8 @@
+rootProject.name = 'springconsul'
+include 'service1'
+include 'service2'
+include 'client1'
+
+rootProject.children.each{
+  it.name="${rootProject.name}-${it.name}"
+}

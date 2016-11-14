@@ -1,0 +1,41 @@
+version: '2'
+services:
+
+  build-all:
+    extends:
+      file: build-all.yml
+      service: build-all
+
+  consul-server:
+    extends:
+      file: consul/consul.yml
+      service: consul-server
+    depends_on:
+       - build-all
+
+  service1:
+    extends:
+      file: service1/service1.yml
+      service: service1
+    links:
+      - consul-server:consul-server
+    depends_on:
+      - consul-server
+
+  service2:
+    extends:
+      file: service2/service2.yml
+      service: service2
+    links:
+      - consul-server:consul-server
+    depends_on:
+      - consul-server
+
+  client1:
+    extends:
+      file: client1/client1.yml
+      service: client1
+    links:
+      - consul-server:consul-server
+    depends_on:
+      - consul-server
