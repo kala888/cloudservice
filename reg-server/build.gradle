@@ -1,4 +1,0 @@
-dependencies {
-	compile libs.springcloud.eureka_server
-	compile 'org.springframework.cloud:spring-cloud-config-server'
-}

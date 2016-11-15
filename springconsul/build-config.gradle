@@ -22,17 +22,8 @@ ext {
                         "org.springframework.boot:spring-boot-starter-aop:${springBootVersion}",
                         "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
                 ],
-                springDataMongodb: [
-                        "org.springframework.boot:spring-boot-starter-data-mongodb:${springBootVersion}",
-                ],
                 springSecurity   : [
                         "org.springframework.boot:spring-boot-starter-security:${springBootVersion}"
-                ],
-                springOAuth2     : [
-                        "org.springframework.security.oauth:spring-security-oauth2:${springOauth2Version}"
-                ],
-                springRedis  : [
-                        "org.springframework.boot:spring-boot-starter-redis:${springBootVersion}"
                 ],
                 springBootTomcat : [
                         "org.springframework.boot:spring-boot-starter-tomcat:${springBootVersion}"

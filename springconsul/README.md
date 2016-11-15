@@ -2,24 +2,19 @@
 
 ## Services
 
-## app1
+## service1
+* provid add service
+* curl http://localhost:8080/add?a=13&b=2
 
-## app2
+## service2
+* provide 1+2 service
+* curl http://localhost:8180/plus1and2
 
-## cfg-server
+## client1
+* consul client which will call remote service of service1
+* curl http://localhost:8280/discover
+* curl http://localhost:8280/services
+* curl http://localhost:8280/remote/add?a=4&b=2
 
-## reg-server
-
-## api-gateway
-
-
-
-## swagger2
-* start the swagger2
-> cd swagger2 && gradle clean bootRun
-* open the browser http://localhost:8888/swagger-ui.html
-
-http://172.17.118.152:5555/api/hero/from?accessToken=111
-http://172.17.118.152:5555/api/hero/iplookup?accessToken=111
-http://172.17.118.152:5555/api/hero/warped/add?a=1&b=4&accessToken=111
-http://172.17.118.152:5555/api/calc/add?a=8&b=4&accessToken=111
+## consul
+* consul server
