@@ -1,7 +1,8 @@
-rootProject.name = 'cloudservice'
+rootProject.name = 'springnetflix'
 include 'app1'
 include 'app2'
 include 'reg-server'
+include 'cfg-server'
 include 'api-gateway'
 include 'swagger2'
 

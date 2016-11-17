@@ -7,4 +7,4 @@ zuul.routes.api-calc.serviceId: calc-service
 zuul.routes.api-net.path: /api/hero/**
 zuul.routes.api-net.serviceId: hero
 
-eureka.client.serviceUrl.defaultZone: http://localhost:1111/eureka/
+eureka.client.serviceUrl.defaultZone: http://reg-server:1111/eureka/

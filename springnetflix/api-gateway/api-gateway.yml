@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  api-gateway:
+    image: kala888/jdk
+    volumes:
+      - ./:/project
+      - ../springboot-startup.sh:/startup.sh
+    command: sh -c "/startup.sh springnetflix-api-gateway-0.1.0.SNAPSHOT.jar"
+    ports:
+      - "5555:5555"
+    network_mode: "bridge"
