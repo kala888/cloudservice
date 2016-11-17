@@ -1,0 +1,59 @@
+version: '2'
+services:
+  # build-all:
+  #   extends:
+  #     file: build-all.yml
+  #     service: build-all
+
+
+  reg-server:
+    extends:
+      file: reg-server/reg-server.yml
+      service: reg-server
+    # depends_on:
+    #    - build-all
+
+  cfg-server:
+    extends:
+      file: cfg-server/cfg-server.yml
+      service: cfg-server
+    environment:
+      - wait_seconds=60s
+    links:
+      - reg-server:reg-server
+    depends_on:
+      - reg-server
+
+  api-gateway:
+    extends:
+      file: api-gateway/api-gateway.yml
+      service: api-gateway
+    environment:
+      - wait_seconds=60s
+    links:
+      - reg-server:reg-server
+    depends_on:
+      - reg-server
+
+  app1:
+    extends:
+      file: app1/app1.yml
+      service: app1
+    environment:
+      - wait_seconds=60s
+    links:
+      - reg-server:reg-server
+    depends_on:
+      - reg-server
+
+  app2:
+    extends:
+      file: app2/app2.yml
+      service: app2
+    environment:
+      - wait_seconds=120s
+    links:
+      - reg-server:reg-server
+    depends_on:
+      - reg-server
+      - cfg-server

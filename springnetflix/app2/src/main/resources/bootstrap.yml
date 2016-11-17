@@ -1,0 +1,13 @@
+spring.application.name: hero
+server.port: 8180
+eureka.client.serviceUrl.defaultZone: http://reg-server:1111/eureka/
+eureka.instance.prefer-ip-address: true
+
+spring.cloud.config.profile: dev
+spring.cloud.config.label: develop
+spring.cloud.config.enabled: true
+spring.cloud.config.discovery.enabled: true
+spring.cloud.config.discovery.serviceId: CFG-SERVICE
+      
+
+# spring.cloud.config.uri: http://CFG-SERVICE:7001

@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  reg-server:
+    image: kala888/jdk
+    volumes:
+      - ./:/project
+      - ../springboot-startup.sh:/startup.sh
+    command: sh -c "/startup.sh springnetflix-reg-server-0.1.0.SNAPSHOT.jar"
+    ports:
+      - "1111:1111"
+    network_mode: "bridge"

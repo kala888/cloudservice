@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  cfg-server:
+    image: kala888/jdk
+    volumes:
+      - ./:/project
+      - ../springboot-startup.sh:/startup.sh
+    command: sh -c "/startup.sh springnetflix-cfg-server-0.1.0.SNAPSHOT.jar"
+    ports:
+      - "7001:7001"
+    network_mode: "bridge"
