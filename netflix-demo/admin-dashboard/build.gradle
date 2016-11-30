@@ -1,0 +1,12 @@
+dependencies {
+    compile libs.springboot.base
+//    compile libs.springboot.actuator
+
+    compile libs.bootAdmin
+    compile libs.springcloud.config
+    compile libs.springcloud.eureka
+
+//    compile libs.springboot.security
+//    compile libs.springcloud.oauth2
+//    compile libs.springOauth2
+}

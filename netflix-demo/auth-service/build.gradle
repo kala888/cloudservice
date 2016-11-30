@@ -1,0 +1,17 @@
+dependencies {
+    compile libs.springcloud.oauth2
+    compile libs.springboot.security
+    compile libs.springOauth2
+
+    compile libs.springboot.base
+    compile libs.springboot.mongo
+
+    compile libs.jolokia
+    
+    compile libs.springcloud.config
+    compile libs.springcloud.eureka
+
+    testCompile libs.test
+}
+
+

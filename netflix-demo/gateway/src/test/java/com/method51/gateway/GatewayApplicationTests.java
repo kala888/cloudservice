@@ -1,0 +1,25 @@
+package com.method51.gateway;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+
+import com.method51.gateway.GatewayApplication;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(classes = GatewayApplication.class)
+@WebAppConfiguration
+public class GatewayApplicationTests {
+
+	@Test
+	public void contextLoads() {
+	}
+
+	@Test
+	public void fire() {
+
+	}
+
+}

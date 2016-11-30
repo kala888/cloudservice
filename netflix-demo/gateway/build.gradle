@@ -1,0 +1,7 @@
+dependencies {
+    compile libs.springcloud.config
+    compile libs.springcloud.eureka
+    compile libs.springcloud.zuul
+    
+    testCompile libs.test
+}

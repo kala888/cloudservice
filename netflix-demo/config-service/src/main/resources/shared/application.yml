@@ -1,0 +1,35 @@
+
+management.context-path: /mgmt
+
+logging:
+  level:
+    org.springframework.security: INFO
+
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    statusPageUrlPath: ${management.context-path}/info
+    healthCheckUrlPath: ${management.context-path}/health
+    metadata-map:
+      management.context-path: ${management.context-path}
+  client:
+    serviceUrl:
+      defaultZone: http://registry:7000/eureka/
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://auth-service:5000/users/current
+
+spring:
+  rabbitmq:
+    host: rabbitmq

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: a-service
+  cloud:
+    config:
+      uri: http://config-service:7100
+      fail-fast: true
+      password: ${CONFIG_SERVICE_PASSWORD}
+      username: ${CONFIG_SERVICE_USER}
+
+# security:
+#   user:
+#     name: ${SERVICE_USER}
+#     password: ${SERVICE_PASSWORD}

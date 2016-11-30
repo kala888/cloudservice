@@ -1,0 +1,13 @@
+security:
+  oauth2:
+    client:
+      clientId: admin-service
+      clientSecret: admin
+      accessTokenUri: http://auth-service:5000/oauth/token
+      grant-type: client_credentials
+      scope: server
+
+
+server.port: 7300
+#management.port: 7301
+
