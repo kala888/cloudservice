@@ -6,7 +6,7 @@ dependencies {
     compile libs.springcloud.config
     compile libs.springcloud.feign
     compile libs.springcloud.eureka
-    compile libs.springboot.mongo
+//    compile libs.springboot.mongo
     compile libs.springcloud.amqp
     compile libs.springcloud.hystrix
 
