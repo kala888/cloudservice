@@ -10,7 +10,7 @@ dependencies {
     
     compile libs.springcloud.config
     compile libs.springcloud.eureka
-
+    compile project(":${rootname}-swagger2")
     testCompile libs.test
 }
 

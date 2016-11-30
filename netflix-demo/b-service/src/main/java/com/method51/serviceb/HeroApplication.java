@@ -20,6 +20,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 import com.method51.serviceb.service.security.CustomUserInfoTokenServices;
 
@@ -35,6 +36,7 @@ import feign.RequestInterceptor;
 @Configuration
 public class HeroApplication extends ResourceServerConfigurerAdapter {
 
+    
 	@Autowired
 	private ResourceServerProperties sso;
 
@@ -67,6 +69,7 @@ public class HeroApplication extends ResourceServerConfigurerAdapter {
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 				.antMatchers( "/mgmt","/mgmt/**").permitAll()
+				 .antMatchers("/configuration/**","/swagger**","/webjars/**","/v2/**").permitAll()//swagger
 				.anyRequest().authenticated();
 	}
 }

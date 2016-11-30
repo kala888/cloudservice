@@ -21,8 +21,7 @@ public class Swagger2Application extends SpringBootServletInitializer {
 
 
     public static void main(String[] args) {
-        SpringApplication.run(new Object[] {  Swagger2Application.class,
-                SpringfoxConfiguration.class }, args);
+        SpringApplication.run(new Object[] { Swagger2Application.class, SpringfoxConfiguration.class }, args);
     }
 
 }

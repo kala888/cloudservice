@@ -18,26 +18,27 @@ import java.time.LocalDate;
 
 @Configuration
 @EnableSwagger2
-@ComponentScan("cn.com.bbt.openapi")
+@ComponentScan("com.method51")
 public class SpringfoxConfiguration {
 
     @Autowired
     private TypeResolver typeResolver;
 
+
+
     public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2).select()
-                                                      .apis(RequestHandlerSelectors.any())
-                                                      .paths(PathSelectors.any())
-                                                      .build()
-                                                      .pathMapping("/")
-                                                      .directModelSubstitute(LocalDate.class, String.class)
-                                                      .genericModelSubstitutes(ResponseEntity.class)
-                                                      .alternateTypeRules(AlternateTypeRules.newRule(
-                                                              typeResolver.resolve(DeferredResult.class,
-                                                                                   typeResolver.resolve(
-                                                                                           ResponseEntity.class,
-                                                                                           WildcardType.class)),
-                                                              typeResolver.resolve(WildcardType.class)))
-                                                      .useDefaultResponseMessages(false);
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.any())
+                .build()
+                .pathMapping("/")
+                .directModelSubstitute(LocalDate.class, String.class)
+                .genericModelSubstitutes(ResponseEntity.class)
+                .alternateTypeRules(
+                        AlternateTypeRules.newRule(
+                                typeResolver.resolve(DeferredResult.class,
+                                        typeResolver.resolve(ResponseEntity.class, WildcardType.class)),
+                                typeResolver.resolve(WildcardType.class))).useDefaultResponseMessages(false);
     }
 }

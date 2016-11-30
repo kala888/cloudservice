@@ -1,7 +1,5 @@
 package com.method51.auth;
 
-import com.method51.auth.service.security.MongoUserDetailsService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
@@ -14,6 +12,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -25,6 +24,8 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
+
+import com.method51.auth.service.security.MongoUserDetailsService;
 
 @SpringBootApplication
 @EnableResourceServer
@@ -39,17 +40,27 @@ public class AuthApplication {
     @Configuration
     @EnableWebSecurity
     protected static class webSecurityConfig extends WebSecurityConfigurerAdapter {
+        
 
         @Autowired
         private MongoUserDetailsService userDetailsService;
 
-
+        @Override
+        public void configure(WebSecurity web) throws Exception {
+                web.ignoring()
+                // Spring Security should completely ignore URLs starting with /resources/
+                                .antMatchers( "/mgmt","/mgmt/**","/swagger-ui.html")
+                                .antMatchers("/configuration/**","/swagger**","/webjars/**","/v2/**");
+        }
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
+            
+            http.authorizeRequests().antMatchers("/configuration/**","/swagger**","/webjars/**","/v2/**").permitAll();
             // @formatter:off
                 http.authorizeRequests()
-                        .antMatchers( "/mgmt","/mgmt/**").permitAll()
+                        .antMatchers( "/mgmt","/mgmt/**","/swagger-ui.html").permitAll()
+                        .antMatchers("/configuration/**","/swagger**","/webjars/**","/v2/**").permitAll()//swagger
                         .anyRequest().authenticated()
             .and()
               .csrf().disable();
