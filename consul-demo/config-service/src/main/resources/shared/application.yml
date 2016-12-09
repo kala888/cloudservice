@@ -1,0 +1,29 @@
+
+management.context-path: /mgmt
+
+logging:
+  level:
+    org.springframework.security: INFO
+
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+
+spring:
+  cloud:
+    consul:
+      discovery:
+        prefer-ip-address: true
+      host: consul
+      port: 8500
+      config:
+        enabled: true
+        watch:
+          enabled: true
+#  rabbitmq:
+#    host: rabbitmq

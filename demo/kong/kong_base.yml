@@ -1,0 +1,39 @@
+version: '2'
+services:
+
+  kong-dashboard:
+    build: kong-dashboard/
+    ports:
+      - 7400:8080
+    restart: always
+    command: >
+        /bin/containerpilot
+        -config file:///etc/containerpilot.json
+        npm run start
+
+  # Kong Database
+  kong-database:
+    restart: always
+    image: postgres:9.4
+    ports:
+      - 5432
+    environment:
+      - POSTGRES_USER=kong
+      - POSTGRES_DB=kong
+
+  # Kong
+  kong:
+    build: kong/
+    restart: always
+    # links:
+    #   - kong-database:kong-database
+    ports:
+      - 8000
+      - 8443
+      - 8001
+    expose:
+      - 7946
+      - 7946/udp
+    environment:
+      - KONG_DATABASE=postgres
+      - KONG_PG_HOST=kong-database

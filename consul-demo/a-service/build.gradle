@@ -1,0 +1,12 @@
+dependencies {
+    compile libs.springcloud.config
+    compile libs.springcloud.consul
+//    compile libs.springcloud.amqp
+    compile libs.springcloud.hystrix
+    compile libs.springcloud.feign
+    compile libs.springcloud.ribbon
+
+    compile libs.jolokia
+    compile project(":${rootname}-swagger2")
+    testCompile libs.test
+}

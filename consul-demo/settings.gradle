@@ -1,0 +1,16 @@
+rootProject.name = 'demo'
+// include 'auth-service'
+include 'config-service'
+include 'hystrix-dashboard'
+include 'admin-dashboard'
+// include 'registry'
+include 'swagger2'
+
+include 'gateway'
+include 'b-service'
+include 'a-service'
+// include 'b-service'
+
+rootProject.children.each{
+  it.name="${rootProject.name}-${it.name}"
+}

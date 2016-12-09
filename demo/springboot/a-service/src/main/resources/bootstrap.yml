@@ -1,0 +1,25 @@
+server.port: 5100
+management.context-path: /mgmt
+
+spring:
+  application:
+    name: a-service
+  cloud:
+    consul:
+      discovery:
+        healthCheckPath: ${management.context-path}/health
+        prefer-ip-address: true
+        tags: management.context-path=${management.context-path}
+      host: consul
+      port: 8500
+      config:
+        enabled: true
+        watch:
+          enabled: true
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000

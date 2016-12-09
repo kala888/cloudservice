@@ -1,0 +1,10 @@
+dependencies {
+    compile libs.springboot.base
+    compile libs.springcloud.config
+    compile libs.springcloud.consul_discovery
+    compile libs.springcloud.turbine
+    compile libs.springcloud.rabbit
+    compile libs.springcloud.hystrix_dashboard
+
+    testCompile libs.test
+}

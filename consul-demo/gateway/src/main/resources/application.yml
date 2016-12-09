@@ -1,0 +1,24 @@
+zuul:
+  ignoredServices: '*'
+  host:
+    connect-timeout-millis: 20000
+    socket-timeout-millis: 20000
+
+  routes:
+    # auth-service:
+    #     path: /uaa/**
+    #     url: http://auth-service:5000/
+    #     stripPrefix: true
+    #     sensitiveHeaders:
+
+    a-service:
+        path: /a-service/**
+        serviceId: a-service
+        stripPrefix: true
+        sensitiveHeaders:
+
+    b-service:
+        path: /b-service/**
+        serviceId: b-service
+        stripPrefix: true
+        sensitiveHeaders:

@@ -1,0 +1,18 @@
+version: '2'
+services:
+  consul:
+    image: consul #progrium/consul:latest
+    command: sh -c "consul agent -bind=`hostname -i` -server -ui -client=0.0.0.0 -node=consul -bootstrap-expect=1 -data-dir=/tmp/consul"
+    restart: always
+    mem_limit: 128m
+    ports:
+      - 8500:8500
+    expose:
+      - 53
+      - 8300
+      - 8301
+      - 8302
+      - 8400
+      - 8500
+    dns:
+      - 127.0.0.1
