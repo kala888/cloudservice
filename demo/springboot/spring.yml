@@ -4,7 +4,7 @@ services:
   a-service:
     build: a-service
     ports:
-      - 5100:5100
+      - 5100
     restart: always
     logging:
       options:
@@ -14,7 +14,7 @@ services:
   b-service:
     build: b-service
     ports:
-      - 5200:5200
+      - 5200
     restart: always
     logging:
       options:

@@ -1,0 +1,12 @@
+version: '2'
+services:
+
+  node-app:
+    build: .
+    ports:
+      - 1337
+    restart: always
+    command: >
+        /bin/containerpilot
+        -config file:///etc/containerpilot.json
+        sails lift

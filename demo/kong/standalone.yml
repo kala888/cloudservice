@@ -35,3 +35,5 @@ services:
     environment:
       - KONG_DATABASE=postgres
       - KONG_PG_HOST=kong-database
+    dns:
+      - 192.169.0.1

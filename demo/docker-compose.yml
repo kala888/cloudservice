@@ -16,6 +16,12 @@ services:
       file: kong/kong_base.yml
       service: kong-database
 
+
+  node-app:
+    extends:
+      file: nodejs/helloWorld/helloworld.yml
+      service: node-app
+
   kong:
     extends:
       file: kong/kong_base.yml
@@ -23,6 +29,8 @@ services:
     links:
       - consul
       - kong-database:kong-database
+    dns_search:
+      - consul    
 
 
   a-service:
@@ -39,11 +47,3 @@ services:
     extends:
       file: springboot/spring.yml
       service: admin-dashboard
-
-
-  # nginx-lb:
-  #   extends:
-  #     file: nginx/nginx.yml
-  #     service: nginx-lb
-  #   links:
-  #     - consul

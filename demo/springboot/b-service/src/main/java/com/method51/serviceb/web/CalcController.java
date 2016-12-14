@@ -18,17 +18,20 @@ public class CalcController {
 
 
     @RequestMapping(value = "/remote/add", method = RequestMethod.GET)
-    @HystrixCommand(fallbackMethod = "fallBackCall")
     public String warpedAdd(@RequestParam Integer a, @RequestParam Integer b) {
-        return remoteCalcClient.add(a, b);
+        return add(a, b);
     }
 
 
 
     @RequestMapping(value = "/plus1and2", method = RequestMethod.GET)
-    @HystrixCommand(fallbackMethod = "fallBackCall")
     public String plus1and2() {
-        return remoteCalcClient.add(1, 2);
+        return add(1, 2);
+    }
+    
+    @HystrixCommand(fallbackMethod = "fallBackCall")
+    public String add(Integer a,Integer b){
+        return remoteCalcClient.add(a, b); 
     }
 
 
